@@ -80,37 +80,35 @@ int main() {
     time_t t;
     srand((unsigned)time(&t));
 
-    // while(!squareFound) {
-    //     populateSquare(randomSquare);
-    // }
+    while(!squareFound) {
+        int temp[9];
+        int random;
+        bool repeat;
 
-    int temp[9];
-    int random;
-    bool repeat;
+        for(int i = 0; i < 9; i++) {
+            do{
+                random = (rand() % 9) + 1;
+                repeat = false;
 
-    for(int i = 0; i < 9; i++) {
-        do{
-            random = (rand() % 9) + 1;
-            repeat = false;
+                for(int j = 0; j < i; j++) {
+                    if(random == temp[j])
+                        repeat = true;
+                }
 
-            for(int j = 0; j < i; j++) {
-                if(random == temp[j])
-                    repeat = true;
-            }
-
-        } while(repeat);
-        temp[i] = random;
-    }
-
-    int counter = 0;
-    for(int i = 0; i < 3; i++) {
-        for(int j = 0; j < 3; j++) {
-            (*randomSquare)[i][j] = temp[counter];
-            counter++;
+            } while(repeat);
+            temp[i] = random;
         }
+
+        int counter = 0;
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                (*randomSquare)[i][j] = temp[counter];
+                counter++;
+            }
+        }
+        numTries++;
+        if(isMagicSquare(randomSquare)) break;
     }
-    
-    numTries++;
 
     printf("Total number of squares generated: %d\n", numTries);
     printSquare(randomSquare);
