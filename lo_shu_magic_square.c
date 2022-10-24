@@ -80,6 +80,7 @@ int main() {
     time_t t;
     srand((unsigned)time(&t));
 
+    //Loop until Lo Shu magic Square is found
     while(!squareFound) {
         int temp[9];
         int random;
@@ -113,5 +114,5 @@ int main() {
     printf("Total number of squares generated: %d\n", numTries);
     printSquare(randomSquare);
     
-
+    
 } //End main
