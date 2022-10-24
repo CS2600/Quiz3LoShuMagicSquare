@@ -107,11 +107,11 @@ int main() {
                 counter++;
             }
         }
-        numTries++;
         if(isMagicSquare(randomSquare)) break;
+        numTries++;
     }
 
-    printf("Total number of squares generated: %d\n", numTries);
+    printf("Total number of squares generated before success: %d\n", numTries);
     printSquare(randomSquare);
     
     
